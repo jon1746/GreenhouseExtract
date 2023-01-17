@@ -21,7 +21,6 @@ let candidateid= process.argv[2];
             id=candidate.id;
             first_name=candidate.first_name;
             last_name=candidate.last_name;
-            filename=id+'.'+last_name + '.'+ first_name+ '.json';
             directory='./'+id+'.'+last_name + '.'+ first_name;
             fs.mkdir(directory, function(err) {
                 if (err) {
@@ -43,7 +42,6 @@ function getAttachments(directory,candidate) {
 
     for (let j = 0; j < candidate.attachments.length; j++) {
         let attachment = candidate.attachments[j];
-        //   console.log(candidate);
         let filename = attachment.filename;
         let url = attachment.url;
         https.get(url, (res) => {
@@ -56,8 +54,6 @@ function getAttachments(directory,candidate) {
               //  console.log('Download Completed');
             })
         })
-
-
     }}
 function saveCandidateData(directory, candidate,body){
         id=candidate.id;
